@@ -1,23 +1,30 @@
-import { Flex, Spinner } from '@chakra-ui/react'
+import { Radio, RadioGroup, Spinner } from '@chakra-ui/react'
 import { useGetAllCategoriesQuery } from 'src/generated/graphql'
-import CategoryCard from './ListItems/Category.card'
+import useCreateBugState from 'src/hooks/useCreateBugState'
 
 export default function CategoriesList(): JSX.Element {
   const { data, loading } = useGetAllCategoriesQuery()
+  const { dispatchSelectedCategory } = useCreateBugState()
+
   if (loading) return <Spinner />
+  if (!data || !data.categories) return <>Error</>
 
   return (
-    <Flex
+    <RadioGroup
       my={5}
       w="full"
-      flexWrap="wrap"
       justifyContent="flex-start"
       alignItems="flex-start"
       flexDir="row"
+      display="flex"
+      flexWrap="wrap"
+      onChange={(e: string) => dispatchSelectedCategory(e)}
     >
-      {data?.categories.map((category) => (
-        <CategoryCard key={category.id} category={category} />
+      {data.categories.map((category) => (
+        <Radio mx={4} value={category.id}>
+          {category.name}
+        </Radio>
       ))}
-    </Flex>
+    </RadioGroup>
   )
 }

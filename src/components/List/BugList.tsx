@@ -7,6 +7,7 @@ import { useInView } from 'react-intersection-observer'
 import customScrollbar from 'src/theme/customScrollbar'
 import BugListFilters from './Filters/BugListFilters'
 import BugListItem from './ListItems/BugListItem'
+import IntersectionObserver from '../Assets/IntersectionObserver'
 
 const MotionBox = motion(Box)
 
@@ -88,20 +89,10 @@ export default function BugList(): JSX.Element {
         display="flex"
         flexDirection="column"
       >
-        <>
-          {data?.bugs.map((bug) => (
-            <BugListItem key={bug.id} bug={bug} />
-          ))}
-          <span
-            style={{
-              visibility: 'hidden',
-            }}
-            ref={ref}
-          >
-            intersection observer marker
-          </span>
-        </>
-        )
+        {data?.bugs.map((bug) => (
+          <BugListItem key={bug.id} bug={bug} />
+        ))}
+        <IntersectionObserver ref={ref} />
       </MotionBox>
     </Flex>
   )

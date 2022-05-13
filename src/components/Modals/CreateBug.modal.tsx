@@ -9,8 +9,8 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { useState } from 'react'
+import customScrollbar from 'src/theme/customScrollbar'
 import CreateBugForm from '../Forms/CreateBug/CreateBugForm'
-import UploadFile from '../Forms/UploadFile'
 import CategoriesList from '../List/CategoriesList'
 import WebsitesTable from '../Tables/Websites.table'
 
@@ -23,11 +23,16 @@ export default function CreateBugModal({
   isOpen,
   onClose,
 }: IProps): JSX.Element {
-  const [isUpload, setIsUpload] = useState<boolean>(false)
   const [checkedItem, setCheckedItem] = useState<string | undefined>()
 
   return (
-    <Modal size="4xl" variant="solid" isOpen={isOpen} onClose={onClose}>
+    <Modal
+      scrollBehavior="inside"
+      size="4xl"
+      variant="solid"
+      isOpen={isOpen}
+      onClose={onClose}
+    >
       <ModalOverlay />
       <ModalContent>
         <ModalHeader
@@ -48,34 +53,27 @@ export default function CreateBugModal({
             Close
           </Button>
         </ModalHeader>
-        <ModalBody>
-          {!isUpload ? (
-            <>
-              <Box mb={10}>
-                <Text my={5} color="#747474" fontWeight="bold" fontSize={15}>
-                  Repport a new Bug 🐛
-                </Text>
-                <Text color="#747474" fontWeight="normal" fontSize={15}>
-                  First we would like to thank you for using our tool. We’re now
-                  going to need some information.
-                </Text>
-              </Box>
-              <WebsitesTable
-                setCheckedItem={setCheckedItem}
-                checkedItem={checkedItem}
-              />
-              <Text my={5} color="#747474" fontWeight="bold" fontSize={15}>
-                Now select a category
-              </Text>
-              <CategoriesList />
-              <CreateBugForm
-                websiteId={checkedItem}
-                setIsUpload={setIsUpload}
-              />
-            </>
-          ) : (
-            <UploadFile setIsUpload={setIsUpload} onClose={onClose} />
-          )}
+        <ModalBody sx={customScrollbar}>
+          <Box mb={10}>
+            <Text my={5} color="#747474" fontWeight="bold" fontSize={15}>
+              Repport a new Bug 🐛
+            </Text>
+            <Text color="#747474" fontWeight="normal" fontSize={15}>
+              First we would like to thank you for using our tool. We’re now
+              going to need some information.
+            </Text>
+          </Box>
+          <WebsitesTable
+            setCheckedItem={setCheckedItem}
+            checkedItem={checkedItem}
+          />
+          <Text my={5} color="#747474" fontWeight="bold" fontSize={15}>
+            Now select a category
+          </Text>
+
+          <CategoriesList />
+
+          <CreateBugForm onClose={onClose} websiteId={checkedItem} />
         </ModalBody>
       </ModalContent>
     </Modal>

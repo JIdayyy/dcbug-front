@@ -31,7 +31,9 @@ export default function InputWithError({
 
   return (
     <>
-      <FormLabel fontStyle="formPlaceholder">{label}</FormLabel>
+      <FormLabel mb={1} mt={3} fontStyle="formPlaceholder">
+        {label}
+      </FormLabel>
 
       <Input
         {...rest}

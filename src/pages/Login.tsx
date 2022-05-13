@@ -107,7 +107,7 @@ export default function Login(): JSX.Element {
           backgroundColor="transparent"
           color="white"
           border="1px solid white"
-          rounded={100}
+          rounded={2}
           my={10}
           onClick={() => setIsLogin((c) => !c)}
         >

@@ -75,7 +75,6 @@ export default function LoginForm({ setIsLogin }: IProps): JSX.Element {
           fontSize={14}
           id="email-login"
           placeholder="Email"
-          my={1}
           register={register}
           errors={formState.errors}
           name="email"
@@ -89,7 +88,6 @@ export default function LoginForm({ setIsLogin }: IProps): JSX.Element {
           onKeyPress={handleKeyDown}
           id="password-login"
           placeholder="Password"
-          my={1}
           register={register}
           errors={formState.errors}
           name="password"

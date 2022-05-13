@@ -75,7 +75,6 @@ export default function RegisterForm({ setIsLogin }: IProps): JSX.Element {
           fontSize={14}
           id="email-register"
           placeholder="Email"
-          my={1}
           register={register}
           errors={formState.errors}
           name="email"
@@ -88,7 +87,6 @@ export default function RegisterForm({ setIsLogin }: IProps): JSX.Element {
           fontSize={14}
           id="first_name"
           placeholder="First Name"
-          my={1}
           register={register}
           errors={formState.errors}
           name="first_name"
@@ -101,7 +99,6 @@ export default function RegisterForm({ setIsLogin }: IProps): JSX.Element {
           fontSize={14}
           id="last-name"
           placeholder="First Name"
-          my={1}
           register={register}
           errors={formState.errors}
           name="last_name"
@@ -115,7 +112,6 @@ export default function RegisterForm({ setIsLogin }: IProps): JSX.Element {
           onKeyPress={handleKeyDown}
           id="password-login"
           placeholder="Password"
-          my={1}
           register={register}
           errors={formState.errors}
           name="password"
@@ -128,7 +124,6 @@ export default function RegisterForm({ setIsLogin }: IProps): JSX.Element {
           onKeyPress={handleKeyDown}
           id="confirm-password-login"
           placeholder="Confirm Password"
-          my={1}
           register={register}
           errors={formState.errors}
           name="confirmPassword"
@@ -142,7 +137,6 @@ export default function RegisterForm({ setIsLogin }: IProps): JSX.Element {
           onKeyPress={handleKeyDown}
           id="acces-key"
           placeholder="Acces key"
-          my={1}
           register={register}
           errors={formState.errors}
           name="secret_key"
@@ -160,7 +154,7 @@ export default function RegisterForm({ setIsLogin }: IProps): JSX.Element {
       </Button>
 
       <Center w="full">
-        <Text>Don’t have an account?</Text>
+        <Text>Allready got an account ?</Text>
         <Text
           _hover={{ textDecoration: 'underline' }}
           cursor="pointer"
@@ -168,7 +162,7 @@ export default function RegisterForm({ setIsLogin }: IProps): JSX.Element {
           fontWeight="bold"
           mx={2}
         >
-          Sign up
+          Sign in
         </Text>
       </Center>
     </Flex>

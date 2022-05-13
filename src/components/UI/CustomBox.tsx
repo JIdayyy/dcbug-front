@@ -2,9 +2,18 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Box, useStyleConfig } from '@chakra-ui/react'
+import {
+  Box,
+  BoxProps,
+  ThemeComponents,
+  ThemeTypings,
+  ThemingProps,
+  useStyleConfig,
+} from '@chakra-ui/react'
 
-export default function CustomBox(props: any): JSX.Element {
+type TProps = BoxProps & ThemingProps['variant']
+
+export default function CustomBox(props: TProps): JSX.Element {
   const { variant, ...rest } = props
 
   const styles = useStyleConfig('Box', { variant })

@@ -31,13 +31,13 @@ export const severityOptions = ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL']
 export const priorityOptions = ['LOW', 'MEDIUM', 'HIGH']
 
 interface IProps {
-  setIsUpload: (value: boolean) => void
   websiteId: string | undefined
+  onClose: () => void
 }
 
 export default function CreateBugForm({
-  setIsUpload,
   websiteId,
+  onClose,
 }: IProps): JSX.Element {
   const [isMute] = useLocalStorage('isMute', false)
   const [play] = useSound(sendSound, {
@@ -76,7 +76,7 @@ export default function CreateBugForm({
       dispatchSetSelectedBug(data.createBugCustom.id)
       dispatchSelectedCategory('')
       dispatchSelectedWebsite('')
-      setIsUpload(true)
+      onClose()
       navigate(`/bugs/${data.createBugCustom.id}`)
     },
     refetchQueries: () => [GetAllBugsByDocument],
@@ -113,7 +113,7 @@ export default function CreateBugForm({
   }
 
   return (
-    <Box width="100%" rounded={5} overflow="scroll" css={customScrollBar}>
+    <Box width="full" p={1} rounded={5} overflow="scroll" css={customScrollBar}>
       <FormError name="title" errors={formState.errors} />
       <Text color="#747474" fontWeight="normal" fontSize={15}>
         What’s the severity :
